@@ -80,15 +80,15 @@ res.json(userData);
 
 app.get('/', function(req,res) {
 
-    // if (pictureUploaded > 0) {
-    //     filePath = __dirname + '/unsloth-dist/interface.html';
-    //     res.sendFile(filePath);
-    // }
-    // else {
-    //     filePath = __dirname + '/unsloth-dist/start.html';
-    //     res.sendFile(filePath);
-    // }
-    res.sendFile(__dirname + '/unsloth-dist/start.html');
+    if (pictureUploaded > 0) {
+        filePath = __dirname + '/unsloth-dist/interface.html';
+        res.sendFile(filePath);
+    }
+    else {
+        filePath = __dirname + '/unsloth-dist/start.html';
+        res.sendFile(filePath);
+    }
+
 
 });
 
