@@ -14,9 +14,7 @@ app.use(express.static(path.join(__dirname, 'unsloth-dist', 'img')));
 app.use(express.static(path.join(__dirname, 'unsloth-dist', 'js')));
 app.use(express.static(path.join(__dirname, 'unsloth-dist')));
 
-app.listen(80, () => {
-    console.log("Server running on port 80");
-});
+
 
 // Replace <Subscription Key> with your valid subscription key.
 
@@ -82,18 +80,17 @@ res.json(userData);
 
 app.get('/', function(req,res) {
 
-    if (pictureUploaded > 0) {
-        filePath = __dirname + '/unsloth-dist/interface.html';
-        res.sendFile(filePath);
-    }
-    else {
-        filePath = __dirname + '/unsloth-dist/start.html';
-        res.sendFile(filePath);
-    }
+    // if (pictureUploaded > 0) {
+    //     filePath = __dirname + '/unsloth-dist/interface.html';
+    //     res.sendFile(filePath);
+    // }
+    // else {
+    //     filePath = __dirname + '/unsloth-dist/start.html';
+    //     res.sendFile(filePath);
+    // }
+    res.sendFile('./unsloth-dist/start.html');
 
 });
 
-function evalutateEmotions(emotionJSON) {
 
-
-}
+app.listen(process.env.PORT || 1337);
