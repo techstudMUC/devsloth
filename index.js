@@ -57,15 +57,26 @@ app.post('/evaluateFace', function(req, res) {
             pictureUploaded = 1;
         }
         jsonObject = JSON.parse(body);
-        emotions = jsonObject[0].faceAttributes;
-        userData ={"slothiness" :{"text":"Potential", "className":"c-btn--warning"},
-            "Tasks": {"1":{"prioClass": "c-task--danger", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "01.01.2019"},
-            "2":{"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "02.01.2019"},
-            "3": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "03.01.2019"},
-            "4": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "04.01.2019"},
-            "5": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "05.01.2019"},
-            "6": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "06.01.2019"}}};
-        console.log(JSON.stringify(emotions));
+        if (jsonObject[0]["faceAttributes"]["emotion"]["happiness"] > 0.5) {
+            userData ={"slothiness" :{"text":"Awesome", "className":"c-btn--success"},
+                "Tasks": {"1":{"prioClass": "c-task--danger", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "01.01.2019"},
+                    "2":{"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "02.01.2019"},
+                    "3": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "03.01.2019"},
+                    "4": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "04.01.2019"},
+                    "5": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "05.01.2019"},
+                    "6": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "06.01.2019"}}};
+        }
+        else {
+            userData ={"slothiness" :{"text":"Potential", "className":"c-btn--danger"},
+                "Tasks": {"1":{"prioClass": "c-task--danger", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "01.01.2019"},
+                    "2":{"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "02.01.2019"},
+                    "3": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "03.01.2019"},
+                    "4": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "04.01.2019"},
+                    "5": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "05.01.2019"},
+                    "6": {"prioClass": "c-task--success", "caption": "Monetisation (Share revenue with developers)", "type": "Übungsblatt", "date": "06.01.2019"}}};
+        }
+
+        console.log(JSON.stringify(jsonObject[0]["faceAttributes"]["emotion"]));
         res.send();
     });
 
