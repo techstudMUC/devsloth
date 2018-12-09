@@ -88,7 +88,7 @@ app.get('/', function(req,res) {
     //     filePath = __dirname + '/unsloth-dist/start.html';
     //     res.sendFile(filePath);
     // }
-    res.sendFile('./unsloth-dist/start.html');
+    res.sendFile(__dirname + '/unsloth-dist/start.html');
 
 });
 
